@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  postgres-db:
+    image: postgres:15
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: shopdb
+    ports:
+      - "5433:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  spring-app:
+    build: .
+    container_name: spring-postgres-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/shopdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      APP_SEED_SIZE: 20000
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-db
+
+volumes:
+  pg_data:
