@@ -5,7 +5,6 @@ import com.example.shop.repository.CategoryRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/categories")
 public class CategoryController {
