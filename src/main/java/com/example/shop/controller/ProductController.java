@@ -5,7 +5,7 @@ import com.example.shop.repository.ProductRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
-
+@RestController
 @RequestMapping("/products")
 public class ProductController {
     private final ProductRepository repo;
